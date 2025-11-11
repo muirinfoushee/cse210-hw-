@@ -27,7 +27,7 @@ class ListingActivty : Activity
         while (DateTime.Now < endTime)
         {
             Console.Write("> ");
-            string? response = Console.ReadLine();
+            string response = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(response))
             {
                 count++;
