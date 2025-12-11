@@ -49,7 +49,7 @@ class Program
             Console.WriteLine("4. Quit");
             Console.Write("Enter your choice: ");
 
-            string? choice = Console.ReadLine();
+            string choice = Console.ReadLine();
             Console.WriteLine();
 
             int index;
