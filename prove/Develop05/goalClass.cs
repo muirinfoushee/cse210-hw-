@@ -1,18 +1,37 @@
+using System;
+
 abstract class Goal
 {
-    Goal(string name, string description, int points)
+    protected string _name;
+    protected string _description;
+    protected int _points;
+
+    public Goal(string name, string description, int points)
     {
-        // _name : string
-        // _description : string
-        // _points : int
+        _name = name;
+        _description = description;
+        _points = points;
     }
-    void RecordEvent()
+
+    public abstract int RecordEvent();
+    public abstract string GetStatus();
+    public abstract string SaveData();
+
+    public static Goal LoadGoal(string data)
     {
-        
+        string[] parts = data.Split('|');
+        string type = parts[0];
+
+        if (type == "Simple")
+            return new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]), bool.Parse(parts[4]));
+
+        if (type == "Eternal")
+            return new EternalGoal(parts[1], parts[2], int.Parse(parts[3]));
+
+        if (type == "Checklist")
+            return new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]),
+                                     int.Parse(parts[4]), int.Parse(parts[5]), int.Parse(parts[6]));
+
+        return null;
     }
-    // bool IsComplete()
-    // {
-        
-    // }
-  
 }
